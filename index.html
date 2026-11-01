@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Autoimmune hepatitis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
+<main class="stage">
+
+  <!-- 1 -->
+  <section class="slide s-title" data-scene="title" data-title="Autoimmune hepatitis">
+    <h1 class="h">Autoimmune hepatitis</h1>
+    <p class="lede" data-a>When the immune system stops tolerating the liver</p>
+    <div class="byline" data-a>
+      <div><b>Shubhayu Ghosh</b><span>Roll no. 146</span></div>
+      <div><b>Shyam K. Saha</b><span>Roll no. 147</span></div>
+    </div>
+    <div class="how" data-a="fade">
+      <span><kbd>←</kbd><kbd>→</kbd>move</span>
+      <span><kbd>N</kbd>speaker notes</span>
+      <span><kbd>F</kbd>fullscreen</span>
+    </div>
+    <aside class="notes">
+      <p>Autoimmune hepatitis (AIH) is a chronic inflammatory liver disease. The immune system loses tolerance to hepatocyte antigens.</p>
+      <p>Why it matters: AIH is easy to miss, it can present at any age, and untreated it can be fatal. Treated, most patients live a normal life.</p>
+    </aside>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide" data-scene="attack" data-title="What it is">
+    <h2 class="h">The body’s own T cells attack its hepatocytes</h2>
+    <ul class="facts">
+      <li data-a="left"><b>Chronic</b><span>Fluctuating inflammation that can lead to cirrhosis</span></li>
+      <li data-a="left"><b>Immune-driven</b><span>T cells do the damage; autoantibodies and high IgG mark it</span></li>
+      <li data-a="left"><b>Treatable</b><span>Responds strikingly well to immunosuppression</span></li>
+    </ul>
+    <aside class="notes">
+      <p>The definition rests on three features: interface hepatitis on histology, hypergammaglobulinaemia (raised IgG) and circulating autoantibodies, all in the absence of another cause.</p>
+      <p>The course is often fluctuating. Flares can be followed by spontaneous improvement, and that is one reason the diagnosis gets delayed.</p>
+    </aside>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide" data-scene="ambient" data-title="Who gets it">
+    <h2 class="h">Any age. Mostly women.</h2>
+    <div class="who">
+      <div>
+        <div class="people" data-a>
+          <svg class="person" viewBox="0 0 58 120"><circle cx="29" cy="16" r="15"/><rect x="6" y="38" width="46" height="82" rx="23"/></svg>
+          <svg class="person" viewBox="0 0 58 120"><circle cx="29" cy="16" r="15"/><rect x="6" y="38" width="46" height="82" rx="23"/></svg>
+          <svg class="person" viewBox="0 0 58 120"><circle cx="29" cy="16" r="15"/><rect x="6" y="38" width="46" height="82" rx="23"/></svg>
+          <svg class="person m" viewBox="0 0 58 120"><circle cx="29" cy="16" r="15"/><rect x="6" y="38" width="46" height="82" rx="23"/></svg>
+        </div>
+        <div class="ratio" data-a>3 in 4<small>patients are women</small></div>
+        <p class="small" data-a>Two age peaks: adolescence, and the 40s to 60s</p>
+      </div>
+      <div class="bars" data-a="fade">
+        <h3>New cases per 100 000 people per year</h3>
+        <div class="brow"><span>Europe</span><div class="btrack"><i data-bar style="width:91.3%"></i></div><b>1.37</b></div>
+        <div class="brow"><span>Asia</span><div class="btrack"><i data-bar style="width:87.3%"></i></div><b>1.31</b></div>
+        <div class="brow"><span>Americas</span><div class="btrack"><i data-bar style="width:66.7%"></i></div><b>1.00</b></div>
+        <p class="bnote">Worldwide prevalence: 17.4 per 100 000. In Indian cohorts, 35–50% already have cirrhosis at diagnosis.</p>
+      </div>
+    </div>
+    <p class="src" data-a="fade">Lv et al., Liver Int 2019; Grønbæk et al., J Hepatol 2014 (n = 1721); Amarapurkar et al., Ann Hepatol 2007.</p>
+    <aside class="notes">
+      <p>Incidence figures are pooled estimates from the 2019 meta-analysis by Lv and colleagues. Incidence is similar in Asia and Europe, so AIH is not a "Western" disease. Indian data are limited and the condition is probably under-diagnosed.</p>
+      <p>About three quarters of patients in the Danish nationwide cohort were women. The age distribution is classically bimodal, with peaks in adolescence and in the fourth to sixth decades; presentation after 65 is increasingly recognised.</p>
+      <p>The Danish registry showed incidence doubling over two decades, which probably reflects both better recognition and a true rise.</p>
+    </aside>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide s-patho" data-scene="patho0" data-title="Pathogenesis">
+    <h2 class="h">How tolerance breaks</h2>
+    <div class="caps">
+      <div class="cap" data-solo>
+        <h3>Genetic soil</h3>
+        <p>Risk is inherited. HLA-DRB1*03:01 and *04:01 are the main risk alleles; non-HLA genes add smaller effects.</p>
+        <p class="aside">Faulty thymic selection (for example AIRE mutations in APECED) lets self-reactive T cells escape.</p>
+      </div>
+      <div class="cap" data-step data-solo data-scene="patho1">
+        <h3>A trigger that mimics self</h3>
+        <p>Viruses and drugs can carry look-alike epitopes. CYP2D6, the type 2 autoantigen, shares sequences with HCV and HSV-1 proteins.</p>
+        <p class="aside">Gut microbial products reaching the liver may add fuel (emerging evidence).</p>
+      </div>
+      <div class="cap" data-step data-solo data-scene="patho2">
+        <h3>Self-antigen is presented</h3>
+        <p>Injured hepatocytes release self-antigen. Dendritic cells present it on HLA class II to naive CD4⁺ T cells.</p>
+      </div>
+      <div class="cap" data-step data-solo data-scene="patho3">
+        <h3>The brakes fail</h3>
+        <p>Regulatory T cells normally suppress this response. In AIH their number or function is impaired, so autoreactive clones expand.</p>
+      </div>
+      <div class="cap" data-step data-solo data-scene="patho4">
+        <h3>Hepatocytes are attacked</h3>
+        <p>CD4⁺ cells become Th1 (IFN-γ) and Th17 (IL-17) cells. CD8⁺ cytotoxic T cells kill hepatocytes with perforin, granzyme and Fas–FasL.</p>
+      </div>
+      <div class="cap" data-step data-solo data-scene="patho5">
+        <h3>B cells join in</h3>
+        <p>B cells mature into plasma cells that secrete IgG and autoantibodies (ANA, SMA, anti-LKM-1). Antibody-coated hepatocytes are killed by NK cells (ADCC).</p>
+      </div>
+      <div class="cap" data-step data-solo data-scene="patho6">
+        <h3>A self-sustaining loop</h3>
+        <p>Dying hepatocytes release more antigen. The result: high ALT, high IgG, autoantibodies, and interface hepatitis on biopsy.</p>
+      </div>
+    </div>
+    <div class="pbar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <p class="src" data-a="fade">Mieli-Vergani et al., Nat Rev Dis Primers 2018; Sîrbe et al., Int J Mol Sci 2021; de Boer et al., Gastroenterology 2014; Kerkar et al., J Immunol 2003; Longhi et al., J Hepatol 2004.</p>
+    <aside class="notes">
+      <p>Press → to walk through the seven stages, and ← to go back a stage. Labels in the 3D view name each cell as it appears.</p>
+      <p>1. Genetics: the Dutch–German GWAS (de Boer 2014) confirmed HLA-DRB1*03:01 as the primary and *04:01 as the secondary risk allele, and found non-HLA loci SH2B3 and CARD10. CTLA4 polymorphisms have also been reported. AIRE mutations cause APECED, in which AIH-like hepatitis occurs.</p>
+      <p>2. Triggers: molecular mimicry means a microbial or drug-modified protein resembles a self-protein, so the immune response cross-reacts. Kerkar et al. showed cross-reactivity between a CYP2D6 epitope and HCV, CMV and HSV-1 sequences. Drug-induced AIH-like injury is classically linked to nitrofurantoin and minocycline. Gut dysbiosis and increased intestinal permeability have been described in AIH, but this is still emerging evidence.</p>
+      <p>3. Antigen presentation: dendritic cells present autoantigenic peptides on HLA class II molecules to CD4⁺ T cells, with co-stimulation.</p>
+      <p>4. Tregs (CD4⁺CD25⁺FOXP3⁺) are reported to be reduced or dysfunctional in AIH (Longhi 2004); some later studies dispute the numbers, so describe this as "impaired regulation".</p>
+      <p>5. Effectors: Th1 cells (IFN-γ) activate macrophages and upregulate HLA expression; Th17 cells (IL-17) drive inflammation; CD8⁺ CTLs kill via perforin/granzyme and Fas–FasL.</p>
+      <p>6. B cells become plasma cells producing IgG (hence hypergammaglobulinaemia) and autoantibodies. Antibody-coated hepatocytes can be killed by NK cells through antibody-dependent cellular cytotoxicity.</p>
+      <p>7. Tie it together: this loop explains the diagnostic triad and why immunosuppression works.</p>
+    </aside>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide" data-scene="bind" data-title="Serological types">
+    <h2 class="h">Two serological types</h2>
+    <div class="types">
+      <div class="type t1" data-a>
+        <h3><svg viewBox="0 0 40 40" fill="none" stroke="#4F3FB5" stroke-width="4" stroke-linecap="round"><path d="M20 38V20M20 20L8 6M20 20L32 6"/></svg>Type 1</h3>
+        <p class="abs">ANA · pANCA<br/>Anti-SMA <small>(F-actin)</small><br/>Anti-SLA/LP <small>(SepSecS)</small></p>
+        <dl>
+          <dt>Who</dt><dd>Any age, mostly adults</dd>
+          <dt>Share</dt><dd>About 90% of cases</dd>
+          <dt>Course</dt><dd>Often insidious</dd>
+        </dl>
+      </div>
+      <div class="type t2" data-a>
+        <h3><svg viewBox="0 0 40 40" fill="none" stroke="#A3284F" stroke-width="4" stroke-linecap="round"><path d="M20 38V20M20 20L8 6M20 20L32 6"/></svg>Type 2</h3>
+        <p class="abs">Anti-LKM-1 <small>(CYP2D6)</small><br/>Anti-LC-1 <small>(FTCD)</small></p>
+        <dl>
+          <dt>Who</dt><dd>Children and adolescents</dd>
+          <dt>Share</dt><dd>Uncommon in adults</dd>
+          <dt>Course</dt><dd>More acute, can be fulminant</dd>
+        </dl>
+      </div>
+    </div>
+    <p class="src" data-a="fade">Antibodies mark the disease rather than cause it. A minority of patients are seronegative.</p>
+    <aside class="notes">
+      <p>Type 1: ANA and/or SMA (anti-actin). Anti-SLA/LP is highly specific and is associated with more severe disease and relapse.</p>
+      <p>Type 2: anti-LKM-1 targets CYP2D6 and anti-LC-1 targets formiminotransferase cyclodeaminase. It mainly affects children, often presents acutely, is more often associated with IgA deficiency, and long-term treatment is usually needed.</p>
+      <p>Indirect immunofluorescence on rodent tissue is the reference method. Titres of at least 1:40 in adults are considered significant (lower in children).</p>
+    </aside>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide" data-scene="ambient" data-title="Presentation">
+    <h2 class="h">From silent to fulminant</h2>
+    <div class="spectrum" data-a="fade">
+      <div class="bar" data-bar></div>
+      <div class="pulse" aria-hidden="true"></div>
+      <div class="marks">
+        <div>No symptoms<span>Abnormal LFTs on routine bloods</span></div>
+        <div>Insidious<span>Fatigue, malaise, arthralgia, amenorrhoea</span></div>
+        <div>Acute hepatitis<span>Jaundice, can mimic viral hepatitis</span></div>
+        <div>Acute liver failure<span>Coagulopathy, encephalopathy</span></div>
+      </div>
+    </div>
+    <div class="trio">
+      <div data-a><div class="big">Up to 1 in 3</div><p>have no symptoms at diagnosis</p></div>
+      <div data-a><div class="big">28%</div><p>already have cirrhosis when diagnosed</p></div>
+      <div data-a><div class="big">Often</div><p>coexists with thyroiditis, coeliac disease, type 1 diabetes or ulcerative colitis</p></div>
+    </div>
+    <p class="src" data-a="fade">Mack et al., AASLD guidance, Hepatology 2020; Grønbæk et al., J Hepatol 2014 (28% of biopsied patients cirrhotic).</p>
+    <aside class="notes">
+      <p>About a quarter to a third of patients are asymptomatic. Roughly a quarter present acutely, which can include acute severe AIH and acute liver failure. In acute presentations IgG may be normal and histology may show centrilobular necrosis.</p>
+      <p>Cirrhosis at presentation is common, which shows the disease has often been smouldering silently.</p>
+      <p>Look for concurrent autoimmune disease in the patient and their family.</p>
+    </aside>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide" data-scene="swarm" data-title="Laboratory pattern">
+    <h2 class="h">The biochemical signature</h2>
+    <p class="pattern" data-a>High ALT and AST, with ALP normal or only mildly raised: a hepatitic pattern</p>
+    <div class="pct">
+      <div class="axis" data-a="fade"><span>0%</span><span>50%</span><span>100%</span></div>
+      <div class="prow" data-a>
+        <div class="plabel"><b>Raised IgG</b><span>selective; normal in 25–39% of acute AIH</span></div>
+        <div class="ptrack"><i data-bar style="width:85%"></i><em style="right:auto;left:calc(85% - 76px)">≈ 85%</em></div>
+      </div>
+      <div class="prow" data-a>
+        <div class="plabel"><b>Anti-SLA/LP</b><span>uncommon, but over 99% specific</span></div>
+        <div class="ptrack"><i class="range" data-bar style="left:10%;width:20%"></i><em style="left:31%">10–30%</em></div>
+      </div>
+      <div class="prow" data-a>
+        <div class="plabel"><b>ANA and/or SMA</b><span>define type 1; significant at ≥ 1:40 in adults</span></div>
+        <div class="ptrack ptext">Present in most type 1 patients</div>
+      </div>
+      <div class="prow" data-a>
+        <div class="plabel"><b>Anti-LKM-1</b><span>defines type 2, mostly children</span></div>
+        <div class="ptrack ptext">Usually without ANA or SMA</div>
+      </div>
+    </div>
+    <p class="src" data-a="fade">Mack et al., AASLD guidance, Hepatology 2020; EASL CPG 2015; Mieli-Vergani et al., Nat Rev Dis Primers 2018.</p>
+    <aside class="notes">
+      <p>IgG is raised in about 85% of patients. A normal IgG does not exclude AIH, especially in acute presentations. IgG is also a treatment target: normal IgG is part of complete biochemical response.</p>
+      <p>Anti-SLA/LP is found in a minority (10–30%) but is highly specific, and is linked to more severe disease and relapse.</p>
+      <p>If ALP is prominent, think about PBC or PSC variants and get an MRCP.</p>
+    </aside>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide" data-scene="lobule" data-title="Histology">
+    <h2 class="h">Interface hepatitis</h2>
+    <div class="hist">
+      <div data-a><i style="background:#4F3FB5"></i><div><h3>Lymphoplasmacytic infiltrate</h3><p>Plasma cells &amp; lymphocytes breach the limiting plate (centrilobular necrosis in acute AIH)</p></div></div>
+      <div data-a><i style="background:#D95F80"></i><div><h3>Hepatocyte rosettes</h3><p>Regenerative gland-like clusters; in 2008 score, though 2022 IAIHG notes low specificity</p></div></div>
+      <div data-a><i style="background:#D9A21B"></i><div><h3>Emperipolesis</h3><p>Lymphocyte inside a hepatocyte; reflects injury severity rather than specificity (EASL 2025)</p></div></div>
+    </div>
+    <p class="src" data-a="fade">Lohse et al., J Hepatol 2022 (IAIHG histopathology consensus); EASL CPG, J Hepatol 2025.</p>
+    <div class="legend" data-a="fade">
+      <span><i style="background:#6F8FD8"></i>Central vein</span>
+      <span><i style="background:#D0465F"></i>Portal triad</span>
+      <span><i style="background:#F0B3C3"></i>Hepatocyte plates</span>
+      <span><i style="background:#4F3FB5"></i>Immune cells</span>
+    </div>
+    <aside class="notes">
+      <p>Liver biopsy is recommended to confirm the diagnosis, assess activity and stage fibrosis. It also helps exclude alternative diagnoses.</p>
+      <p>The 3D model shows a hepatic lobule, with the central vein in the centre and portal triads (portal vein, hepatic artery, bile duct) at the corners. Immune cells cluster in the portal tracts and break through the limiting plate (the outline): that is interface hepatitis.</p>
+      <p>Hepatocytes near the portal tracts are drawn darker to show injury. None of these features is pathognomonic on its own, so interpretation needs the whole picture.</p>
+    </aside>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide" data-scene="ambient" data-title="Diagnostic score">
+    <h2 class="h">Score a patient</h2>
+    <form class="calc" onsubmit="return false">
+      <div data-a>
+        <fieldset class="crit">
+          <legend>Autoantibodies</legend>
+          <div class="seg">
+            <label><input type="radio" name="ab" value="0" checked /><span>None <em>0</em></span></label>
+            <label><input type="radio" name="ab" value="1" /><span>ANA or SMA ≥ 1:40 <em>1</em></span></label>
+            <label><input type="radio" name="ab" value="2" /><span>≥ 1:80, LKM ≥ 1:40 or SLA+ <em>2</em></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="crit">
+          <legend>IgG</legend>
+          <div class="seg">
+            <label><input type="radio" name="igg" value="0" checked /><span>Normal <em>0</em></span></label>
+            <label><input type="radio" name="igg" value="1" /><span>&gt; upper limit <em>1</em></span></label>
+            <label><input type="radio" name="igg" value="2" /><span>&gt; 1.1 × upper limit <em>2</em></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="crit">
+          <legend>Liver histology</legend>
+          <div class="seg">
+            <label><input type="radio" name="hx" value="0" checked /><span>Atypical <em>0</em></span></label>
+            <label><input type="radio" name="hx" value="1" /><span>Compatible <em>1</em></span></label>
+            <label><input type="radio" name="hx" value="2" /><span>Typical <em>2</em></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="crit">
+          <legend>Viral hepatitis excluded</legend>
+          <div class="seg">
+            <label><input type="radio" name="vir" value="0" checked /><span>No <em>0</em></span></label>
+            <label><input type="radio" name="vir" value="2" /><span>Yes <em>2</em></span></label>
+          </div>
+        </fieldset>
+      </div>
+      <div data-a="pop">
+        <div class="dial">
+          <svg viewBox="0 0 300 300" aria-hidden="true">
+            <circle class="ring-bg" cx="150" cy="150" r="120" fill="none" stroke-width="18" />
+            <circle class="ring-fg" cx="150" cy="150" r="120" fill="none" stroke-width="18" stroke-linecap="round" />
+          </svg>
+          <div class="centre" aria-live="polite"><div class="total">0</div><div class="of">out of 8</div></div>
+        </div>
+        <div class="verdict" aria-live="polite"></div>
+      </div>
+    </form>
+    <p class="src" data-a="fade">Simplified IAIHG criteria (Hennes et al., 2008). 6 = probable, 7 or more = definite. Autoantibodies score 2 at most.</p>
+    <aside class="notes">
+      <p>The simplified criteria are designed for bedside use, and the whole group can score a case together live. Try a typical case: ANA 1:160 (2), IgG 1.5 × ULN (2), typical histology (2), viral serology negative (2), giving 8, definite AIH.</p>
+      <p>Typical histology means interface hepatitis, a lymphocytic or lymphoplasmacytic infiltrate, and rosettes or emperipolesis. Compatible means chronic hepatitis with lymphocytic infiltration but without all the typical features.</p>
+      <p>The score is less sensitive in acute presentations and should not replace clinical judgement.</p>
+    </aside>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide" data-scene="ambient" data-title="Differential diagnosis">
+    <h2 class="h">Exclude the mimics</h2>
+    <div class="ddx">
+      <div data-a><h3>Viral hepatitis</h3><p>HBsAg, anti-HCV and HCV RNA, HEV</p></div>
+      <div data-a><h3>Drug-induced liver injury</h3><p>Nitrofurantoin, minocycline, statins, checkpoint inhibitors</p></div>
+      <div data-a><h3>Wilson disease</h3><p>Under 40: serum caeruloplasmin, 24-h urinary copper, KF rings on slit lamp</p></div>
+      <div data-a><h3>MASLD (fatty liver)</h3><p>Formerly NAFLD; low-titre ANA is common</p></div>
+      <div data-a><h3>PBC or PSC variants</h3><p>Cholestatic picture: AMA, MRCP</p></div>
+    </div>
+    <aside class="notes">
+      <p>Drug-induced AIH-like injury usually resolves after the drug is withdrawn and rarely relapses after steroids are stopped. Relapse after withdrawal points towards idiopathic AIH.</p>
+      <p>Wilson disease can produce positive autoantibodies and raised IgG, so it must be excluded in young patients.</p>
+      <p>Also consider alcohol, haemochromatosis, coeliac disease and alpha-1 antitrypsin deficiency.</p>
+    </aside>
+  </section>
+
+  <!-- 11 -->
+  <section class="slide" data-scene="attackR" data-title="Treatment">
+    <h2 class="h">Treat to full remission</h2>
+    <div class="tx">
+      <div class="tx-step" data-a><div class="dot">1</div><div><h3>Induce</h3><p>Prednisolone 0.5–1 mg/kg/day (or budesonide 9 mg if non-cirrhotic) + azathioprine 1–2 mg/kg/day at week 2. Check HBV &amp; TPMT; add Ca/Vit D.</p></div></div>
+      <div class="tx-step goal" data-step data-scene="treated"><div class="dot">✓</div><div><h3>Target: normal ALT and IgG</h3><p>Complete biochemical response within 6 months</p></div></div>
+      <div class="tx-step" data-step><div class="dot">2</div><div><h3>Maintain (≥ 3 years)</h3><p>Taper steroid; continue azathioprine (safe in pregnancy). Trial withdrawal only after ≥ 2 years of normal ALT &amp; IgG.</p></div></div>
+      <div class="tx-step alt" data-step><div class="dot">↺</div><div><h3>Second-line &amp; rescue</h3><p>Mycophenolate (EASL 2025 first-line alternative; teratogenic), tacrolimus, or transplant in liver failure.</p></div></div>
+    </div>
+    <aside class="notes">
+      <p>Press → to reveal each stage. The 3D liver settles once the target is reached.</p>
+      <p>Check TPMT before azathioprine. Budesonide is contraindicated in cirrhosis and acute severe AIH. Mycophenolate is an established alternative to azathioprine and is now backed as a first-line option in recent guidance; it is teratogenic, so avoid it in pregnancy.</p>
+      <p>Supportive care: bone protection (calcium, vitamin D, DEXA), vaccinations, and monitoring of blood counts and glucose.</p>
+      <p>Acute severe AIH: early high-dose steroids and early discussion with a transplant centre. If there is no improvement within about 7 days, list for transplant.</p>
+    </aside>
+  </section>
+
+  <!-- 12 -->
+  <section class="slide" data-scene="ambient" data-title="Prognosis">
+    <h2 class="h">Steroids changed the outlook</h2>
+    <div class="prog">
+      <div class="trial" data-a>
+        <h3>Mayo Clinic trial, severe disease<small>Deaths during the trial (Soloway 1972)</small></h3>
+        <div class="trow"><span>Placebo</span><div class="ttrack"><i class="bad" data-bar style="width:41%"></i><b>41%</b></div></div>
+        <div class="trow"><span>Azathioprine alone</span><div class="ttrack"><i class="bad" data-bar style="width:36%"></i><b>36%</b></div></div>
+        <div class="trow"><span>Prednisone</span><div class="ttrack"><i class="good" data-bar style="width:6%"></i><b>6%</b></div></div>
+        <div class="trow"><span>Prednisone + azathioprine</span><div class="ttrack"><i class="good" data-bar style="width:7%"></i><b>7%</b></div></div>
+      </div>
+      <div class="trial" data-a>
+        <h3>Royal Free trial<small>Alive at 10 years (Kirk 1980)</small></h3>
+        <div class="trow"><span>Prednisolone</span><div class="ttrack"><i class="good" data-bar style="width:63%"></i><b>63%</b></div></div>
+        <div class="trow"><span>No treatment</span><div class="ttrack"><i class="bad" data-bar style="width:27%"></i><b>27%</b></div></div>
+        <div class="side-facts">
+          <div data-a><b>28%</b><span>already cirrhotic at diagnosis (Denmark, 2014)</span></div>
+          <div data-a><b>50–90%</b><span>relapse after drugs are withdrawn</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="src" data-a="fade">Soloway et al., Gastroenterology 1972; Kirk et al., Gut 1980; Grønbæk et al., J Hepatol 2014; EASL CPG 2015.</p>
+    <aside class="notes">
+      <p>These are among the first randomised trials in hepatology. In the Mayo trial of severe disease, prednisone alone or with azathioprine cut mortality from about 40% to under 10%; azathioprine alone was no better than placebo, because it acts too slowly to induce remission.</p>
+      <p>In the Royal Free trial, 10-year survival was 63% with prednisolone versus 27% in controls.</p>
+      <p>Modern cohorts still show excess mortality: in the Danish nationwide cohort, 10-year mortality was 26%, higher in men and in those cirrhotic at diagnosis. Cirrhotic patients need HCC surveillance (ultrasound every 6 months) and variceal screening.</p>
+    </aside>
+  </section>
+
+  <!-- 13 -->
+  <section class="slide" data-scene="treated" data-title="Take-home">
+    <h2 class="h">Five things to remember</h2>
+    <ul class="take">
+      <li data-a>Consider AIH in any unexplained hepatitis, at any age and in either sex</li>
+      <li data-a>Raised transaminases, raised IgG and autoantibodies, then confirm with biopsy</li>
+      <li data-a>Exclude viral hepatitis, drugs, Wilson disease and MASLD first</li>
+      <li data-a>Steroid plus azathioprine; aim for normal ALT and IgG</li>
+      <li data-a>Therapy is long-term, often lifelong, and outcomes are good</li>
+    </ul>
+    <aside class="notes"><p>Recap, then open the floor for questions.</p></aside>
+  </section>
+
+  <!-- 14 -->
+  <section class="slide" data-scene="title" data-title="References">
+    <h2 class="h">Further reading</h2>
+    <ul class="refs">
+      <li data-a><i>EASL Clinical Practice Guidelines on the management of autoimmune hepatitis.</i> J Hepatol 2025;83(2):453–501.</li>
+      <li data-a><i>Mack CL et al. Diagnosis and management of autoimmune hepatitis in adults and children: 2019 AASLD practice guidance.</i> Hepatology 2020;72:671–722.</li>
+      <li data-a><i>Hennes EM et al. Simplified criteria for the diagnosis of autoimmune hepatitis.</i> Hepatology 2008;48:169–176.</li>
+      <li data-a><i>Mieli-Vergani G et al. Autoimmune hepatitis.</i> Nat Rev Dis Primers 2018;4:18017.</li>
+      <li data-a><i>Sîrbe C et al. Pathogenesis of autoimmune hepatitis: cellular and molecular mechanisms.</i> Int J Mol Sci 2021.</li>
+      <li data-a><i>Lv T et al. Incidence and prevalence of AIH in Asian, European and American populations.</i> Liver Int 2019.</li>
+      <li data-a><i>Grønbæk L et al. Autoimmune hepatitis in Denmark.</i> J Hepatol 2014. <i>Soloway RD et al.</i> Gastroenterology 1972. <i>Kirk AP et al.</i> Gut 1980.</li>
+    </ul>
+    <div class="qa" data-a="pop">Questions?</div>
+    <aside class="notes"><p>Thank you.</p></aside>
+  </section>
+
+</main>
+
+<nav class="chrome" aria-label="Slide navigation">
+  <div class="ticks"></div>
+  <div class="right">
+    <span class="deck-title"></span>
+    <button class="nav-prev" aria-label="Previous slide">‹</button>
+    <button class="nav-next" aria-label="Next slide">›</button>
+  </div>
+</nav>
+<div id="notes" role="note"></div>
+
+<script type="module" src="deck.js"></script>
+</body>
+</html>
