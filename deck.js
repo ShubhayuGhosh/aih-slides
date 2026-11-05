@@ -24,6 +24,9 @@ try {
 
 const stage = document.querySelector('.stage');
 const slides = [...document.querySelectorAll('.slide')];
+const firstBackup = slides.findIndex((s) => s.hasAttribute('data-backup'));
+const mainEnd = firstBackup < 0 ? slides.length - 1 : firstBackup - 1;
+let returnSlide = mainEnd;
 const ticks = document.querySelector('.ticks');
 const titleEl = document.querySelector('.deck-title');
 const notesEl = document.getElementById('notes');
@@ -82,7 +85,10 @@ if (bim) {
 slides.forEach((s, i) => {
   const b = document.createElement('button');
   b.className = 'tick';
+  if (s.hasAttribute('data-backup')) b.classList.add('tick-backup');
+  if (i === firstBackup) b.classList.add('backup-start');
   b.setAttribute('aria-label', `Slide ${i + 1}: ${s.dataset.title}`);
+  b.title = s.dataset.title;
   b.addEventListener('click', () => go(i));
   ticks.appendChild(b);
 });
@@ -205,6 +211,7 @@ function go(n, opts = {}) {
   }
   const prev = slides[index];
   const next = slides[n];
+  if (n > mainEnd && index >= 0 && index <= mainEnd) returnSlide = index;
   const back = n < index;
   if (prev) {
     prev.classList.remove('is-active');
@@ -218,7 +225,13 @@ function go(n, opts = {}) {
   else next._step = (back || opts.all) ? steps(next).length : 0;
   applyScene(next);
   [...ticks.children].forEach((t, i) => t.classList.toggle('on', i === n));
+  [...ticks.children].forEach((t, i) => {
+    if (i === n) t.setAttribute('aria-current', 'step');
+    else t.removeAttribute('aria-current');
+  });
   titleEl.textContent = n === 0 ? '' : next.dataset.title;
+  document.querySelector('.nav-backup').textContent = n > mainEnd ? 'Return to talk' : 'Backup';
+  document.querySelector('.nav-backup').setAttribute('aria-pressed', String(n > mainEnd));
   history.replaceState(null, '', `#${n + 1}`);
   renderNotes();
 }
@@ -226,7 +239,13 @@ function go(n, opts = {}) {
 function nextStep() {
   const s = slides[index];
   if (s && revealStep(s)) return;
+  if (index === mainEnd) return;
   go(index + 1);
+}
+
+function toggleBackup() {
+  if (firstBackup < 0) return;
+  go(index > mainEnd ? returnSlide : firstBackup);
 }
 
 // ---------- notes ----------
@@ -237,14 +256,16 @@ function renderNotes() {
 
 // ---------- input ----------
 addEventListener('keydown', (e) => {
-  if (e.target.matches('input, button, textarea') && ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', ' ', 'Enter'].includes(e.key)) return;
+  if (e.defaultPrevented || e.target.matches('input, textarea, select, [contenteditable="true"]')) return;
+  if (e.target.closest('button, a, [role="button"]') && [' ', 'Enter'].includes(e.key)) return;
   switch (e.key) {
     case 'ArrowRight': case 'ArrowDown': case 'PageDown': case ' ': case 'Enter':
       e.preventDefault(); nextStep(); break;
     case 'ArrowLeft': case 'ArrowUp': case 'PageUp':
       e.preventDefault(); prevStep(); break;
     case 'Home': go(0); break;
-    case 'End': go(slides.length - 1); break;
+    case 'End': go(index > mainEnd ? slides.length - 1 : mainEnd); break;
+    case 'b': case 'B': toggleBackup(); break;
     case 'n': case 'N': document.body.classList.toggle('show-notes'); break;
     case 'f': case 'F':
       if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
@@ -254,6 +275,7 @@ addEventListener('keydown', (e) => {
 });
 document.querySelector('.nav-prev').addEventListener('click', () => prevStep());
 document.querySelector('.nav-next').addEventListener('click', () => nextStep());
+document.querySelector('.nav-backup').addEventListener('click', toggleBackup);
 
 let tx = null;
 addEventListener('touchstart', (e) => (tx = e.touches[0].clientX), { passive: true });
@@ -279,9 +301,9 @@ if (calc) {
     calc.querySelectorAll('input:checked').forEach((i) => (sum += +i.value));
     gsap.to(ring, { strokeDashoffset: C * (1 - sum / 8), opacity: sum ? 1 : 0, duration: 0.8, ease: 'expo.out' });
     gsap.to(counter, { v: sum, duration: 0.6, ease: 'power2.out', onUpdate: () => (total.textContent = Math.round(counter.v)) });
-    let text = 'Score below 6. AIH not supported by the score.', cls = 'low';
-    if (sum >= 7) { text = 'Definite AIH'; cls = 'def'; }
-    else if (sum === 6) { text = 'Probable AIH'; cls = 'prob'; }
+    let text = 'Below threshold. Does not exclude AIH.', cls = 'low';
+    if (sum >= 7) { text = 'Definite AIH by criteria'; cls = 'def'; }
+    else if (sum === 6) { text = 'Probable AIH by criteria'; cls = 'prob'; }
     verdict.textContent = text;
     calc.dataset.level = cls;
   };
