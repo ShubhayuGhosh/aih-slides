@@ -133,8 +133,8 @@ export class Patho {
       g.add(bb, rr);
       const a = this.add('dna', g);
       a.chips = [
-        this.label(g, 'HLA-DRB1*03:01<small>main risk allele (Europeans)</small>', 0.85, 1.15),
-        this.label(g, 'HLA-DRB1*04:01<small>second risk allele</small>', -0.15, 1.15),
+        this.label(g, 'HLA-DRB1*03:01<small>type 1 susceptibility (European cohorts)</small>', 0.85, 1.15),
+        this.label(g, 'HLA-DRB1*04:01<small>type 1 susceptibility association</small>', -0.15, 1.15),
         this.label(g, 'Non-HLA genes<small>CTLA4, SH2B3, CARD10</small>', -0.95, 1.15),
       ];
     }
@@ -155,7 +155,7 @@ export class Patho {
       tEscape.position.set(0.02, 0.36, 0.14);
       g.add(left, right, m1, m2, tEscape);
       g.userData.tEscape = tEscape;
-      this.add('thymus', g, 'Thymus (AIRE)<small>aberrant T-cell selection</small>', -0.52, 0);
+      this.add('thymus', g, 'Central tolerance<small>AIRE defects in APECED</small>', -0.52, 0);
     }
 
     // Hepatocyte cluster
@@ -201,7 +201,7 @@ export class Patho {
         const t = new THREE.Mesh(tip, mat(COL.antigen)); t.quaternion.copy(q);
         g.add(s, t);
       }
-      this.add('virus', g, 'Virus<small>e.g. HCV, HSV-1: look-alike epitopes</small>', 0.48);
+      this.add('virus', g, 'Viral antigens<small>proposed molecular mimicry</small>', 0.48);
     }
 
     // Drug capsule (two-tone via vertex colours)
@@ -257,7 +257,7 @@ export class Patho {
       [[-0.22, 0.38, 0.3], [0.05, 0.42, -0.5], [0.28, 0.36, 0.8]].forEach(([x, y, r]) => {
         const m = new THREE.Mesh(rod, mat(COL.gut)); m.position.set(x, y, 0.04); m.rotation.z = r; g.add(m);
       });
-      this.add('gut', g, 'Leaky gut barrier & microbiome<small>PAMPs translocate via portal vein</small>', 0.56);
+      this.add('gut', g, 'Gut–liver signalling<small>proposed microbial translocation</small>', 0.56);
     }
 
     // Dendritic cell (APC)
@@ -309,7 +309,7 @@ export class Patho {
       this.brake2 = makeArm(); // Treg ⊣ APC
       for (const br of [this.brake1, this.brake2]) g.add(br.a, br.b, br.bar, br.mid);
       const a = this.add('brake', g);
-      a.lab = this.label(this.brake1.mid, 'Suppression fails', 0.0, 0.62);
+      a.lab = this.label(this.brake1.mid, 'Impaired immune regulation', 0.0, 0.62);
     }
 
     // CD8 cytotoxic T cell
