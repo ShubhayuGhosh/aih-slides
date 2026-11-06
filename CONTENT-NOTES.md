@@ -1,6 +1,6 @@
 # Autoimmune hepatitis: teaching revision
 
-Audience: undergraduate classmates. Suggested main-talk duration: 12–15 minutes; this is a pacing target, not a measured runtime. The main sequence has 16 slides plus references/Q&A. Three backups are optional. The seven-stage pathogenesis animation is preserved.
+Audience: undergraduate classmates. Suggested main-talk duration: approximately 14–16 minutes; this is a pacing target, not a measured runtime. The main sequence has 18 slides plus references/Q&A. Three backups are optional. The seven-stage pathogenesis animation is preserved.
 
 ## Presentation controls
 
@@ -21,8 +21,8 @@ Audience: undergraduate classmates. Suggested main-talk duration: 12–15 minute
 | 8–10 | Laboratory clues, diagnostic pathway and biopsy | 2–3 minutes |
 | 11 | Score one hypothetical case with the class | 45–60 seconds |
 | 12 | Distinguish the main mimics | 45–60 seconds |
-| 13–15 | Treatment, follow-up and situations that change management | 2–3 minutes |
-| 16–17 | Recap and questions | 45 seconds, plus questions |
+| 13–17 | Treatment, response, reassessment, special populations and prognosis | 3–4 minutes |
+| 18–19 | Recap and questions | 45 seconds, plus questions |
 
 Backups: A, adult drug regimens; B, PBC/PSC variants; C, historical evidence for treatment.
 
@@ -59,7 +59,7 @@ This is a standard internal-medicine teaching structure, checked against society
 | [Mieli-Vergani et al., 2018](https://doi.org/10.1038/nrdp.2018.17) | Mechanism overview; original mechanism references retained on slide 5 |
 | [Soloway et al., 1972](https://pubmed.ncbi.nlm.nih.gov/4538724/) | Historical treatment trial, backup C |
 
-The deck's on-screen source footers are deliberately short. Linked core references and additional presenter references appear on slide 17 and in its notes. All treatment teaching requires individual clinical interpretation; the deck is a classroom presentation rather than a prescribing tool.
+The deck's on-screen source footers are deliberately short. Linked core references and additional presenter references appear on slide 19 and in its notes. All treatment teaching requires individual clinical interpretation; the deck is a classroom presentation rather than a prescribing tool.
 
 ## Verification of the 5 November revision
 
@@ -95,3 +95,25 @@ Additional source checks:
 - [van Gerven et al., 2015](https://pubmed.ncbi.nlm.nih.gov/25611558/): HLA-DRB1*03:01 and *04:01 associations in type 1 AIH; neither is required for disease.
 
 Verification of this revision: all 20 slide layouts and all seven pathogenesis captions were checked at 1600 × 900; no text exceeded the slide/content-footer bounds. Score thresholds, speaker notes, supplementary navigation and the seven-stage sequence passed browser interaction checks. Stylesheet, navigation code, scene geometry/materials and scene/reveal assignments were compared with the preceding commit and are unchanged. Only model label strings changed in patho.js. JavaScript syntax and Git whitespace checks passed.
+
+
+## Publication and speaker-notes PDF — 6 November 2026
+
+Two additional main slides sharpen clinical interpretation without adding a new case:
+
+- Slide 15 distinguishes inadequate response, drug intolerance and relapse. It emphasises diagnostic/adherence review, treatment optimisation, MMF for selected azathioprine-intolerant patients, and re-induction with maintenance after relapse. The notes distinguish chronic response milestones from urgent reassessment in acute severe disease.
+- Slide 17 summarises prognostic factors: cirrhosis/decompensation, early sustained biochemical response, and cumulative inflammatory activity/repeated relapse. It avoids a single survival percentage across clinically different populations.
+
+References/Q&A is slide 19; supplementary slides are 20–22. The original calculator example is unchanged. Core sources for the additions are the [BSG 2025 guideline](https://gut.bmj.com/content/74/9/1364) and [EASL 2025 guideline](https://easlcampus.eu/sites/default/files/2025-08/EASL_CPGs_on_the_management_of_AIH.pdf).
+
+[speaker-notes.pdf](speaker-notes.pdf) is exported directly from the notes in index.html. It contains a contents page, one page per slide, bookmarks and reference links. Regenerate it after editing notes with:
+
+```sh
+python3 scripts/export_speaker_notes.py
+```
+
+The exporter requires ReportLab and an installed Unicode font (Arial Unicode on macOS or DejaVu Sans on Linux). No font files are committed. The PDF is linked from the reference slide and published alongside the deck.
+
+GitHub Pages is configured to publish the main branch from the repository root. Revision query strings on the stylesheet and module imports ensure that browsers request the updated assets after publication.
+
+Publication checks: the added slides, nearby main slides and reference/download layout fit at 1600 × 900 and 1366 × 768. Supplementary links and return navigation target slides 20–22 correctly. The PDF serves as application/pdf, has 24 pages and 23 bookmarks, and its 22 slide labels match the deck. Representative PDF pages were visually reviewed, including Unicode notation and references. The prior clinical-case prompt and stylesheet are unchanged.

@@ -5,7 +5,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { mergeGeometries, mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { SimplexNoise } from 'three/addons/math/SimplexNoise.js';
-import { Patho } from './patho.js';
+import { Patho } from './patho.js?v=20261106b';
 
 const C = {
   liver: 0xc94f6d,

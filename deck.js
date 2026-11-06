@@ -1,4 +1,4 @@
-import { Scene3D } from './scene.js';
+import { Scene3D } from './scene.js?v=20261106b';
 
 const SCENES = {
   title:     { liver: 1, lobule: 0, inflame: 0,    shift: 0.26,  camZ: 7.2, camY: 0.3, cells: 'orbit',     abs: 'hidden' },
